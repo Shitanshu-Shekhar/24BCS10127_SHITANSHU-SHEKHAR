@@ -1,0 +1,92 @@
+{
+  "info": {
+    "name": "Campus Event Registration API",
+    "_postman_id": "c3e96f41-8b24-4a2a-b4a1-4f91d7b3cabc",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "registrationId",
+      "value": "PASTE_MONGODB_ID_HERE"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/registrations",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"studentName\": \"Aarav Sharma\",\n  \"collegeEmail\": \"aarav.cs24@institute.ac.in\",\n  \"rollNumber\": \"24CSB102\",\n  \"eventType\": \"CODING_HACKATHON\",\n  \"teamSize\": 3,\n  \"ticketPrice\": 600,\n  \"discountCode\": \"CAMPUS50\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all registrations",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/registrations"
+      }
+    },
+    {
+      "name": "Filter registrations",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/registrations?eventType=ROBOTICS&status=CONFIRMED"
+      }
+    },
+    {
+      "name": "Get registration by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/registrations/{{registrationId}}"
+      }
+    },
+    {
+      "name": "Update registration",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/registrations/{{registrationId}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"CONFIRMED\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete registration",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/registrations/{{registrationId}}"
+      }
+    }
+  ]
+}
